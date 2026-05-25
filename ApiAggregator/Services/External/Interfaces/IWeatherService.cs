@@ -1,6 +1,6 @@
 ﻿using ApiAggregatorService.Models;
 
-namespace ApiAggregatorService.Services.External
+namespace ApiAggregator.Services.External.Interfaces
 {
 	public interface IWeatherService
 	{

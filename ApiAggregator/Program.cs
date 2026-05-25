@@ -1,8 +1,10 @@
+using ApiAggregator.Services.External.Interfaces;
+using ApiAggregator.Services.External.Services;
 using ApiAggregatorService.Middleware;
 using ApiAggregatorService.Services.Aggregation;
 using ApiAggregatorService.Services.Cache;
-using ApiAggregatorService.Services.External;
 using ApiAggregatorService.Services.Statistics;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi;
 
@@ -62,18 +64,11 @@ builder.Services.AddSwaggerGen(c =>
 		In = ParameterLocation.Header
 	});
 
-	c.AddSecurityRequirement(_ =>
-		new OpenApiSecurityRequirement
-		{
-			{
-				new OpenApiSecuritySchemeReference(
-					"Bearer",
-					null,
-					null
-				),
-				new List<string>()
-			}
-		});
+	c.AddSecurityRequirement(_ => 
+	new OpenApiSecurityRequirement
+	{
+		[new OpenApiSecuritySchemeReference("Bearer")] = []
+	});
 });
 
 

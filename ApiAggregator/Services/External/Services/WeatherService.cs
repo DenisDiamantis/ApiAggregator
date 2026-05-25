@@ -1,10 +1,11 @@
-﻿using ApiAggregatorService.Models;
+﻿using ApiAggregator.Services.External.Interfaces;
+using ApiAggregatorService.Models;
 using ApiAggregatorService.Services.Cache;
 using ApiAggregatorService.Services.Statistics;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 
-namespace ApiAggregatorService.Services.External
+namespace ApiAggregator.Services.External.Services
 {
 	public class WeatherService : IWeatherService
 	{

@@ -1,7 +1,7 @@
 ﻿using ApiAggregatorService.Models.Enums;
 using ApiAggregatorService.Models.News;
 
-namespace ApiAggregatorService.Services.External
+namespace ApiAggregator.Services.External.Interfaces
 {
 	public interface INewsService
 	{

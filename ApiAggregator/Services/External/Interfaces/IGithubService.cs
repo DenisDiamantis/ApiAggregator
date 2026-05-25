@@ -1,7 +1,7 @@
 ﻿using ApiAggregatorService.Models;
 using ApiAggregatorService.Models.Enums;
 
-namespace ApiAggregatorService.Services.External
+namespace ApiAggregator.Services.External.Interfaces
 {
 	public interface IGithubService
 	{

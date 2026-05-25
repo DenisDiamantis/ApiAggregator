@@ -1,8 +1,8 @@
 ﻿using ApiAggregatorService.Models;
-using ApiAggregatorService.Services.External;
 
 namespace ApiAggregatorService.Services.Aggregation
 {
+	using ApiAggregator.Services.External.Interfaces;
 	using ApiAggregatorService.Models.Enums;
 	using ApiAggregatorService.Models.News;
 	using ApiAggregatorService.Services.Statistics;

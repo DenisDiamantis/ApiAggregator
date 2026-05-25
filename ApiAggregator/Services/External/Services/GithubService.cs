@@ -1,11 +1,12 @@
-﻿using ApiAggregatorService.Models;
+﻿using ApiAggregator.Services.External.Interfaces;
+using ApiAggregatorService.Models;
 using ApiAggregatorService.Models.Enums;
 using ApiAggregatorService.Services.Cache;
 using ApiAggregatorService.Services.Statistics;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
 
-namespace ApiAggregatorService.Services.External
+namespace ApiAggregator.Services.External.Services
 {
 	public class GithubService : IGithubService
 	{
@@ -16,11 +17,13 @@ namespace ApiAggregatorService.Services.External
 
 		public GithubService(
 			IHttpClientFactory factory,
+			IConfiguration config,
 			ApiPerformanceTracker tracker,
 			IApiCacheService cache,
 			ILogger<GithubService> logger)
 		{
 			_http = factory.CreateClient("GitHub");
+			_http.BaseAddress = new Uri(config["GitHubApi:BaseUrl"]);
 			_http.DefaultRequestHeaders.UserAgent.ParseAdd("ApiAggregatorService/1.0");
 			_tracker = tracker;
 			_cache = cache;
@@ -76,7 +79,7 @@ namespace ApiAggregatorService.Services.External
 			int limit,
 			CancellationToken ct)
 		{
-			var url = $"https://api.github.com/users/{username}/repos?per_page={limit}";
+			var url = $"users/{username}/repos?per_page={limit}";
 
 			if (sort is RepoSortMode.Alphabetical or RepoSortMode.LastUpdated)
 			{
